@@ -1,0 +1,41 @@
+body {
+    background-image: url('https://c.wallhere.com/photos/0a/93/reactJS_JavaScript_Typescript_programming_programming_language_React_Native_Facebook_React-1568827.jpg!d');
+     font-family: Arial;
+     background-size: auto auto;
+     height: 100vh;
+   }
+   
+   .menu {
+     background-color: white;
+     
+   }
+   
+   a {
+     text-decoration: none;
+     color: teal;
+   }
+   
+   a:hover {
+     text-decoration: underline;
+     font-size: 1.05em;
+   }
+   
+   .menu ul {
+     display: flex;
+     justify-content: space-around;
+   }
+   
+   .menu li {
+     list-style: none;
+   }
+   
+   .site-subtitle,
+   .site-title {
+     text-align: center;
+     color: whitesmoke;
+   }
+   
+   .site-subtitle {
+     font-style: italic;
+   }
+   

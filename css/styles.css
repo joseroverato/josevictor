@@ -5,10 +5,9 @@
 }
 
 body {
-  background-image: url('https://png.pngtree.com/thumb_back/fw800/back_our/20190621/ourmid/pngtree-simple-blue-tech-lines-background-image_206074.jpg');
-  background-size: auto 90vh;
-  height: 90vh;
-  font-family: roboto;
+  background-image: linear-gradient(to bottom, rgb(68, 99, 160), rgb(113, 135, 180),rgb(164, 180, 233));
+  background-size: auto auto;
+  font-family: 'Roboto', sans-serif;
 }
 
 @media (min-width: 400px) {
@@ -24,11 +23,10 @@ body {
 }
 
 header {
-  height: 90vh;
+  height: 95vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
 }
 
 .menu {
@@ -45,6 +43,7 @@ header {
 
 .menu li {
   list-style: none;
+  
 }
 
 .menu a {
@@ -54,9 +53,14 @@ header {
   text-decoration: none;
 }
 
+.menu a:hover {
+  text-decoration: underline;
+}
+
 .site-title {
   color: whitesmoke;
   text-align: center;
+  margin-bottom: 1em;
 }
 
 .site-subtitle {
@@ -69,14 +73,35 @@ header {
 
 .itens-portifolio {
   display: flex;
-}
-
-ul p {
-  font-style: bold;
-}
-
-h2 {
+  flex-wrap: wrap;
+  justify-content: space-around;
+  list-style: none;
   text-align: center;
   font-weight: bold;
-  color: lightblue;
+  color: rgb(230, 238, 245);;;
+  font-size: 1.2em;
+  font-family: 'roboto';
+  
+}
+
+.site-info1 {
+  text-align: center;
+  font-weight: bold;
+  color: rgb(230, 238, 245);;;
+  margin-bottom: 1em;
+  -webkit-text-stroke: 0.05em black;
+  font-size: 2.5em;
+  font-family: 'Rammetto One', cursive;
+}
+
+.image-portifolio {
+  width: 70vw;
+  justify-content: center;
+  margin-bottom: 0.5em;
+  box-shadow: 0.2em 0.1em 1em 2px rgb(255, 255, 255, 0.2);
+}
+
+.skills {
+  text-decoration: none;
+  justify-content: center;
 }

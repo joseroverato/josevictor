@@ -1,20 +1,26 @@
 {
   "squad": "travel-squad",
-  "status": "running",
-  "step": { "current": 1, "total": 12, "label": "step-00-intake" },
+  "status": "completed",
+  "step": { "current": 12, "total": 12, "label": "step-11-presentation" },
   "agents": [
-    { "id": "coordinator",    "name": "Marco Destinos",  "icon": "🗂", "status": "working", "deliverTo": null, "desk": { "col": 1, "row": 1 } },
-    { "id": "transport",      "name": "Vera Rotas",      "icon": "✈",  "status": "idle",    "deliverTo": null, "desk": { "col": 2, "row": 1 } },
-    { "id": "accommodation",  "name": "Ricardo Conforto","icon": "🏨", "status": "idle",    "deliverTo": null, "desk": { "col": 3, "row": 1 } },
-    { "id": "gastronomy",     "name": "Sofia Sabores",   "icon": "🍽", "status": "idle",    "deliverTo": null, "desk": { "col": 1, "row": 2 } },
-    { "id": "tourist-guide",  "name": "André Aventuras", "icon": "🗺", "status": "idle",    "deliverTo": null, "desk": { "col": 2, "row": 2 } },
-    { "id": "cultural-guide", "name": "Lara Culturas",   "icon": "🎭", "status": "idle",    "deliverTo": null, "desk": { "col": 3, "row": 2 } },
-    { "id": "financial",      "name": "Bruno Bolso",     "icon": "💰", "status": "idle",    "deliverTo": null, "desk": { "col": 1, "row": 3 } },
-    { "id": "itinerary",      "name": "Camila Cronos",   "icon": "📅", "status": "idle",    "deliverTo": null, "desk": { "col": 2, "row": 3 } },
-    { "id": "presentation",   "name": "Diego Designs",   "icon": "🎨", "status": "idle",    "deliverTo": null, "desk": { "col": 3, "row": 3 } }
+    { "id": "coordinator",    "name": "Marco Destinos",  "icon": "🗂", "status": "done", "deliverTo": null, "desk": { "col": 1, "row": 1 } },
+    { "id": "transport",      "name": "Vera Rotas",      "icon": "✈",  "status": "done", "deliverTo": null, "desk": { "col": 2, "row": 1 } },
+    { "id": "accommodation",  "name": "Ricardo Conforto","icon": "🏨", "status": "done", "deliverTo": null, "desk": { "col": 3, "row": 1 } },
+    { "id": "gastronomy",     "name": "Sofia Sabores",   "icon": "🍽", "status": "done", "deliverTo": null, "desk": { "col": 1, "row": 2 } },
+    { "id": "tourist-guide",  "name": "André Aventuras", "icon": "🗺", "status": "done", "deliverTo": null, "desk": { "col": 2, "row": 2 } },
+    { "id": "cultural-guide", "name": "Lara Culturas",   "icon": "🎭", "status": "done", "deliverTo": null, "desk": { "col": 3, "row": 2 } },
+    { "id": "financial",      "name": "Bruno Bolso",     "icon": "💰", "status": "done", "deliverTo": null, "desk": { "col": 1, "row": 3 } },
+    { "id": "itinerary",      "name": "Camila Cronos",   "icon": "📅", "status": "done", "deliverTo": null, "desk": { "col": 2, "row": 3 } },
+    { "id": "presentation",   "name": "Diego Designs",   "icon": "🎨", "status": "done", "deliverTo": null, "desk": { "col": 3, "row": 3 } }
   ],
-  "handoff": null,
+  "handoff": {
+    "from": "presentation",
+    "to": null,
+    "message": "13 cards visuais gerados com tabelas de horários, rotas Google Maps e alertas importantes.",
+    "completedAt": "2026-03-28T07:20:00Z"
+  },
   "run_id": "2026-03-28-070954",
   "startedAt": "2026-03-28T07:09:54Z",
-  "updatedAt": "2026-03-28T07:09:54Z"
+  "completedAt": "2026-03-28T07:20:00Z",
+  "updatedAt": "2026-03-28T07:20:00Z"
 }

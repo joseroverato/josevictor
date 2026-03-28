@@ -63,6 +63,7 @@ agents:
 pipeline:
   entry: pipeline/pipeline.yaml
   steps:
+    - step-00-intake
     - step-01-brief
     - step-02-transport
     - step-03-accommodation

@@ -5,6 +5,25 @@ description: "Pipeline completo de planejamento de viagem — do brief inicial a
 steps:
 
   # ─────────────────────────────────────────────
+  # FASE 0 — ENTREVISTA INTERATIVA
+  # ─────────────────────────────────────────────
+  - id: step-00-intake
+    name: "Entrevista de Planejamento"
+    type: agent
+    agent: coordinator
+    execution: inline
+    description: >
+      Marco Destinos conduz uma entrevista conversacional com o usuário,
+      coletando todas as informações necessárias para planejar a viagem.
+      As perguntas são feitas em blocos temáticos, de forma natural e progressiva.
+      Ao final, o brief completo é salvo automaticamente em
+      pipeline/data/travel-brief.md e um resumo interpretado é gerado
+      em output/{run_id}/brief-parsed.md.
+    output:
+      - pipeline/data/travel-brief.md
+      - output/{run_id}/brief-parsed.md
+
+  # ─────────────────────────────────────────────
   # FASE 1 — INTERPRETAÇÃO DO BRIEF
   # ─────────────────────────────────────────────
   - id: step-01-brief

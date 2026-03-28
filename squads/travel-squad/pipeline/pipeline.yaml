@@ -194,10 +194,11 @@ steps:
     model_tier: powerful
     depends_on: step-10-checkpoint-itinerary
     description: >
-      Diego Designs monta os cards do itinerário em formato apresentável:
-      — Um card por dia com programação detalhada
-      — Mapa indicando deslocamento do dia (Google Maps embed ou link)
+      Diego Designs monta os cards do itinerário em HTML responsivo:
+      — Um card visual por dia com programação detalhada
+      — Link de rota no Google Maps para cada dia
       — Slide final com custos por dia e custo total da viagem
-      Salva em output/{run_id}/presentation-cards.md
+      — Seção de links úteis (passagens, hospedagem, ingressos, apps)
+      Salva em output/{run_id}/presentation-cards.html
     output:
-      - output/{run_id}/presentation-cards.md
+      - output/{run_id}/presentation-cards.html

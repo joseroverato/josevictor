@@ -1,0 +1,64 @@
+name: "Travel Squad"
+code: "travel-squad"
+description: "Equipe especializada em planejamento completo de viagens — do roteiro inicial aos cards visuais do itinerário."
+icon: "🧳"
+version: "1.0.0"
+language: "pt-BR"
+
+# Contexto compartilhado
+memory: "_memory/memories.md"
+
+# Dados de entrada do usuário
+data:
+  - pipeline/data/travel-brief.md
+
+# Equipe de agentes
+agents:
+  - id: coordinator
+    name: "Marco Destinos"
+    icon: "🗂"
+    file: agents/coordinator.agent.md
+
+  - id: transport
+    name: "Vera Rotas"
+    icon: "✈"
+    file: agents/transport.agent.md
+
+  - id: accommodation
+    name: "Ricardo Conforto"
+    icon: "🏨"
+    file: agents/accommodation.agent.md
+
+  - id: gastronomy
+    name: "Sofia Sabores"
+    icon: "🍽"
+    file: agents/gastronomy.agent.md
+
+  - id: tourist-guide
+    name: "André Aventuras"
+    icon: "🗺"
+    file: agents/tourist-guide.agent.md
+
+  - id: cultural-guide
+    name: "Lara Culturas"
+    icon: "🎭"
+    file: agents/cultural-guide.agent.md
+
+  - id: financial
+    name: "Bruno Bolso"
+    icon: "💰"
+    file: agents/financial.agent.md
+
+  - id: itinerary
+    name: "Camila Cronos"
+    icon: "📅"
+    file: agents/itinerary.agent.md
+
+  - id: presentation
+    name: "Diego Designs"
+    icon: "🎨"
+    file: agents/presentation.agent.md
+
+# Pipeline de execução
+pipeline:
+  entry: pipeline/pipeline.yaml

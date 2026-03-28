@@ -1,0 +1,23 @@
+{
+  "squad": "travel-squad",
+  "status": "idle",
+  "step": {
+    "current": 0,
+    "total": 11,
+    "label": ""
+  },
+  "agents": [
+    { "id": "coordinator",    "name": "Marco Destinos",  "icon": "🗂", "status": "idle", "desk": { "col": 1, "row": 1 } },
+    { "id": "transport",      "name": "Vera Rotas",      "icon": "✈",  "status": "idle", "desk": { "col": 2, "row": 1 } },
+    { "id": "accommodation",  "name": "Ricardo Conforto","icon": "🏨", "status": "idle", "desk": { "col": 3, "row": 1 } },
+    { "id": "gastronomy",     "name": "Sofia Sabores",   "icon": "🍽", "status": "idle", "desk": { "col": 1, "row": 2 } },
+    { "id": "tourist-guide",  "name": "André Aventuras", "icon": "🗺", "status": "idle", "desk": { "col": 2, "row": 2 } },
+    { "id": "cultural-guide", "name": "Lara Culturas",   "icon": "🎭", "status": "idle", "desk": { "col": 3, "row": 2 } },
+    { "id": "financial",      "name": "Bruno Bolso",     "icon": "💰", "status": "idle", "desk": { "col": 1, "row": 3 } },
+    { "id": "itinerary",      "name": "Camila Cronos",   "icon": "📅", "status": "idle", "desk": { "col": 2, "row": 3 } },
+    { "id": "presentation",   "name": "Diego Designs",   "icon": "🎨", "status": "idle", "desk": { "col": 3, "row": 3 } }
+  ],
+  "run_id": null,
+  "startedAt": null,
+  "updatedAt": null
+}

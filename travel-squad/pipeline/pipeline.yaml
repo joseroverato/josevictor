@@ -1,0 +1,184 @@
+name: "Travel Squad Pipeline"
+version: "1.0.0"
+description: "Pipeline completo de planejamento de viagem — do brief inicial aos cards visuais."
+
+steps:
+
+  # ─────────────────────────────────────────────
+  # FASE 1 — INTERPRETAÇÃO DO BRIEF
+  # ─────────────────────────────────────────────
+  - id: step-01-brief
+    name: "Leitura e Interpretação do Brief"
+    type: agent
+    agent: coordinator
+    execution: inline
+    description: >
+      Marco Destinos lê o brief do usuário em pipeline/data/travel-brief.md,
+      interpreta todos os campos (destinos, datas, orçamento, preferências,
+      proibições) e cria um resumo estruturado em output/{run_id}/brief-parsed.md
+      para os demais agentes consumirem.
+    output:
+      - output/{run_id}/brief-parsed.md
+
+  # ─────────────────────────────────────────────
+  # FASE 2 — PESQUISA PARALELA DOS ESPECIALISTAS
+  # ─────────────────────────────────────────────
+  - id: step-02-transport
+    name: "Pesquisa de Transporte e Logística"
+    type: agent
+    agent: transport
+    execution: subagent
+    model_tier: powerful
+    depends_on: step-01-brief
+    description: >
+      Vera Rotas pesquisa todas as opções de transporte entre os destinos:
+      voos, ônibus, trem e carro. Faz análise custo × tempo com recomendação
+      justificada. Salva em output/{run_id}/transport-options.md
+    output:
+      - output/{run_id}/transport-options.md
+
+  - id: step-03-accommodation
+    name: "Pesquisa de Hospedagem"
+    type: agent
+    agent: accommodation
+    execution: subagent
+    model_tier: powerful
+    depends_on: step-01-brief
+    description: >
+      Ricardo Conforto pesquisa opções de hospedagem para cada destino,
+      filtradas por orçamento, localização e preferências do viajante.
+      Salva em output/{run_id}/accommodation-options.md
+    output:
+      - output/{run_id}/accommodation-options.md
+
+  - id: step-04-gastronomy
+    name: "Mapeamento Gastronômico"
+    type: agent
+    agent: gastronomy
+    execution: subagent
+    model_tier: powerful
+    depends_on: step-01-brief
+    description: >
+      Sofia Sabores mapeia os melhores restaurantes, pratos típicos obrigatórios
+      e custo médio de refeições por destino. Destaca o que é famoso e elogiado.
+      Salva em output/{run_id}/gastronomy-map.md
+    output:
+      - output/{run_id}/gastronomy-map.md
+
+  - id: step-05-tourist
+    name: "Levantamento de Atrações Turísticas"
+    type: agent
+    agent: tourist-guide
+    execution: subagent
+    model_tier: powerful
+    depends_on: step-01-brief
+    description: >
+      André Aventuras levanta pontos turísticos, passeios, ingressos e
+      horários de funcionamento. Filtra pelo perfil e preferências do viajante.
+      Salva em output/{run_id}/tourist-attractions.md
+    output:
+      - output/{run_id}/tourist-attractions.md
+
+  - id: step-06-cultural
+    name: "Guia Cultural e de Segurança"
+    type: agent
+    agent: cultural-guide
+    execution: subagent
+    model_tier: fast
+    depends_on: step-01-brief
+    description: >
+      Lara Culturas prepara o guia cultural: costumes locais, etiqueta,
+      dicas de segurança, áreas a evitar, vestuário recomendado e informações
+      práticas. Salva em output/{run_id}/cultural-guide.md
+    output:
+      - output/{run_id}/cultural-guide.md
+
+  # ─────────────────────────────────────────────
+  # FASE 3 — CONSOLIDAÇÃO FINANCEIRA
+  # ─────────────────────────────────────────────
+  - id: step-07-financial
+    name: "Análise Financeira e Orçamento"
+    type: agent
+    agent: financial
+    execution: inline
+    depends_on:
+      - step-02-transport
+      - step-03-accommodation
+      - step-04-gastronomy
+      - step-05-tourist
+    description: >
+      Bruno Bolso consolida todos os custos levantados pelos especialistas,
+      verifica se o plano cabe no orçamento máximo, sugere cortes e alternativas
+      de economia. Apresenta breakdown diário e total da viagem.
+      Salva em output/{run_id}/financial-analysis.md
+    output:
+      - output/{run_id}/financial-analysis.md
+
+  # ─────────────────────────────────────────────
+  # CHECKPOINT 1 — APROVAÇÃO DO PLANO GERAL
+  # ─────────────────────────────────────────────
+  - id: step-08-checkpoint-plan
+    name: "✋ Aprovação do Plano Geral"
+    type: checkpoint
+    depends_on: step-07-financial
+    description: >
+      Marco Destinos apresenta ao usuário um resumo consolidado com:
+      opções de transporte recomendadas, hospedagem sugerida, custo estimado
+      total e destaques turísticos e gastronômicos.
+
+      O usuário pode:
+      ✅ APROVAR — seguir para montagem do roteiro dia a dia
+      ✏️  AJUSTAR — solicitar alterações em qualquer especialidade antes de continuar
+    on_reject: step-02-transport
+
+  # ─────────────────────────────────────────────
+  # FASE 4 — MONTAGEM DO ROTEIRO
+  # ─────────────────────────────────────────────
+  - id: step-09-itinerary
+    name: "Montagem do Roteiro Dia a Dia"
+    type: agent
+    agent: itinerary
+    execution: inline
+    model_tier: powerful
+    depends_on: step-08-checkpoint-plan
+    description: >
+      Camila Cronos monta o cronograma completo da viagem, dia a dia com
+      horários realistas, tempos de deslocamento, atividades, refeições e
+      momentos de descanso. Integra todas as pesquisas anteriores.
+      Salva em output/{run_id}/itinerary-draft.md
+    output:
+      - output/{run_id}/itinerary-draft.md
+
+  # ─────────────────────────────────────────────
+  # CHECKPOINT 2 — APROVAÇÃO DO ROTEIRO
+  # ─────────────────────────────────────────────
+  - id: step-10-checkpoint-itinerary
+    name: "✋ Aprovação do Roteiro"
+    type: checkpoint
+    depends_on: step-09-itinerary
+    description: >
+      Camila Cronos apresenta o roteiro completo dia a dia.
+
+      O usuário pode:
+      ✅ APROVAR — seguir para criação dos cards visuais
+      ✏️  AJUSTAR — solicitar mudanças no roteiro antes de finalizar
+    on_reject: step-09-itinerary
+
+  # ─────────────────────────────────────────────
+  # FASE 5 — CRIAÇÃO DOS CARDS VISUAIS
+  # ─────────────────────────────────────────────
+  - id: step-11-presentation
+    name: "Criação dos Cards e Infográficos"
+    type: agent
+    agent: presentation
+    execution: inline
+    model_tier: powerful
+    depends_on: step-10-checkpoint-itinerary
+    description: >
+      Diego Designs monta os cards do itinerário em formato apresentável:
+      — Um card por dia com programação detalhada
+      — Mapa indicando deslocamento do dia (Google Maps embed ou link)
+      — Slide final com custos por dia e custo total da viagem
+      Salva em output/{run_id}/presentation-cards.md
+    output:
+      - output/{run_id}/presentation-cards.md

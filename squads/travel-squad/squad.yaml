@@ -62,3 +62,15 @@ agents:
 # Pipeline de execução
 pipeline:
   entry: pipeline/pipeline.yaml
+  steps:
+    - step-01-brief
+    - step-02-transport
+    - step-03-accommodation
+    - step-04-gastronomy
+    - step-05-tourist
+    - step-06-cultural
+    - step-07-financial
+    - step-08-checkpoint-plan
+    - step-09-itinerary
+    - step-10-checkpoint-itinerary
+    - step-11-presentation

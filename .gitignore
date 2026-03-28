@@ -1,0 +1,5 @@
+node_modules/
+_opensquad/_browser_profile/
+squads/*/output/
+*.log
+.DS_Store

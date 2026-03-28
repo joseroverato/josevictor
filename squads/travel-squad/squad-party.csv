@@ -1,0 +1,10 @@
+path,displayName,icon
+./agents/coordinator.agent.md,Marco Destinos,🗂
+./agents/transport.agent.md,Vera Rotas,✈
+./agents/accommodation.agent.md,Ricardo Conforto,🏨
+./agents/gastronomy.agent.md,Sofia Sabores,🍽
+./agents/tourist-guide.agent.md,André Aventuras,🗺
+./agents/cultural-guide.agent.md,Lara Culturas,🎭
+./agents/financial.agent.md,Bruno Bolso,💰
+./agents/itinerary.agent.md,Camila Cronos,📅
+./agents/presentation.agent.md,Diego Designs,🎨
